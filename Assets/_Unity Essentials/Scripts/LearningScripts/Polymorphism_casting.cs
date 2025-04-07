@@ -4,31 +4,31 @@ public class Polymorphism_casting : MonoBehaviour
 {
     void Start()
     {
-        Animal myDog = new Dog();
-        Animal myCat = new Cat();
-        myDog.MakeSound();  
-        myCat.MakeSound();  
+        AnimalLearn myDog = new DogLearn();
+        AnimalLearn myCat = new CatLearn();
+        myDog.MakeSound();
+        myCat.MakeSound();
 
-        if (myDog is Dog dog)
+        if (myDog is DogLearn dog)
         {
             Debug.Log("This is a Dog!");
         }
 
-        if (myCat is Cat cat)
+        if (myCat is CatLearn cat)
         {
             Debug.Log("This is a Cat!");
         }
 
-        RescueShelter shelter = new RescueShelter();
+        RescueShelterLearn shelter = new RescueShelterLearn();
     }
 
     void Update()
     {
-        
+
     }
 }
 
-public class Animal : MonoBehaviour
+public class AnimalLearn
 {
     public virtual void MakeSound()
     {
@@ -36,7 +36,7 @@ public class Animal : MonoBehaviour
     }
 }
 
-public class Dog : Animal
+public class DogLearn : AnimalLearn
 {
     public override void MakeSound()
     {
@@ -49,7 +49,7 @@ public class Dog : Animal
     }
 }
 
-public class Cat : Animal
+public class CatLearn : AnimalLearn
 {
     public override void MakeSound()
     {
@@ -62,7 +62,7 @@ public class Cat : Animal
     }
 }
 
-public class Mammal
+public class MammalLearn
 {
     public void GrowFur()
     {
@@ -70,24 +70,24 @@ public class Mammal
     }
 }
 
-public class RescueShelter
+public class RescueShelterLearn
 {
-    public Mammal[] mammals;
+    public AnimalLearn[] mammals;
 
-    public RescueShelter()
+    public RescueShelterLearn()
     {
-        mammals = new Mammal[2];
-        mammals[0] = new Cat();  
-        mammals[1] = new Dog(); 
+        mammals = new AnimalLearn[2];
+        mammals[0] = new CatLearn();
+        mammals[1] = new DogLearn();
 
-        if (mammals[0] is Cat cat)
+        if (mammals[0] is CatLearn cat)
         {
-            cat.Meow();  
+            cat.Meow();
         }
 
-        if (mammals[1] is Dog dog)
+        if (mammals[1] is DogLearn dog)
         {
-            dog.Woof(); 
+            dog.Woof();
         }
     }
 }

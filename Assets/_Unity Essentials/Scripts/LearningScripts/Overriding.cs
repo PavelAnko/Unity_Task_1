@@ -5,24 +5,24 @@ public class Overriding : MonoBehaviour
 {
     void Start()
     {
-        Apple myApple = new Apple();
+        AppleLearn myApple = new AppleLearn();
         myApple.SayHello();
         myApple.Chop();
 
-        Fruit myFruit = new Apple();
+        FruitLearn myFruit = new AppleLearn(); // Виправлено з ApplLearne
         myFruit.SayHello();
         myFruit.Chop();
     }
 
     void Update()
     {
-        
+
     }
 }
 
-public class Apple : Fruit
+public class AppleLearn : FruitLearn
 {
-    public Apple()
+    public AppleLearn()
     {
         Debug.Log("1st Apple Constructor Called");
     }
@@ -40,9 +40,9 @@ public class Apple : Fruit
     }
 }
 
-public class Fruit
+public class FruitLearn
 {
-    public Fruit()
+    public FruitLearn()
     {
         Debug.Log("1st Fruit Constructor Called");
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Method_overloading : MonoBehaviour
 {    void Start()
     {
-        SomeClass myClass = new SomeClass();
+        SomeClassLearn myClass = new SomeClassLearn();
         myClass.Add(1, 2);
         myClass.Add("Hello ", "World");
     }
@@ -14,7 +14,7 @@ public class Method_overloading : MonoBehaviour
     }
 }
 
-public class SomeClass
+public class SomeClassLearn
 {
     public int Add(int num1, int num2)
     {

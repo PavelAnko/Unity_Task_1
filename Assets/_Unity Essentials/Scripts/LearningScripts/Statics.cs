@@ -7,46 +7,44 @@ public class Statics : MonoBehaviour
 
     void Start()
     {
-        Enemy enemy1 = new Enemy();
-        Enemy enemy2 = new Enemy();
-        Enemy enemy3 = new Enemy();
-        int x = Enemy.enemyCount;
+        EnemyLearn enemy1 = new EnemyLearn();
+        EnemyLearn enemy2 = new EnemyLearn();
+        EnemyLearn enemy3 = new EnemyLearn();
+        int enemyTotal = EnemyLearn.enemyCount;
 
         playerCount++;
 
-        int x = Utilities.Add(5, 6);
+        int sum = UtilitiesLearn.Add(5, 6);
     }
 
     void Update()
     {
-        
+
     }
 }
 
-public class Enemy
+public class EnemyLearn
 {
     public static int enemyCount = 0;
 
-    public Enemy()
+    public EnemyLearn()
     {
         enemyCount++;
     }
 }
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagerLearn : MonoBehaviour
 {
     void Start()
     {
-        int x = Player.playerCount;
+        int x = Statics.playerCount;
     }
 }
 
-public static class Utilities
+public static class UtilitiesLearn
 {
     public static int Add(int num1, int num2)
     {
         return num1 + num2;
     }
 }
-
-

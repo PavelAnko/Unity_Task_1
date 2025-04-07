@@ -1,15 +1,14 @@
 using UnityEngine;
-using System.Collections;
 using System;
+using System.Collections.Generic; 
 using Random = UnityEngine.Random;
 
 public class Skript1 : MonoBehaviour
 {
-
     void Start()
     {
         float speed = Random.value;
-        Drawing drawing = new Drawing();    
+        DrawingLearn1 drawing = new DrawingLearn1();
     }
 
     void Update()
@@ -18,7 +17,7 @@ public class Skript1 : MonoBehaviour
     }
 }
 
-public class Drawing
+public class DrawingLearn1
 {
-    public System.Collections.List<Item> items;
+    public List<int> items = new List<int>(); 
 }

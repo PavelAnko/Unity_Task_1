@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public interface IDamageable
+public interface IDamageableLearn
 {
     Vector3 Position { get; }
     void Damage(float damage);
@@ -11,14 +11,14 @@ public class Interfaces : MonoBehaviour
 {
     public float range = 10f;
     public float damage = 35f;
-    List<IDamageable> m_AllDamageables = new List<IDamageable>();
+    List<IDamageableLearn> m_AllDamageables = new List<IDamageableLearn>();
 
     void Start()
     {
-        MonoBehaviour[] allScripts = FindObjectsOfType<MonoBehaviour>();
+        MonoBehaviour[] allScripts = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
         foreach (MonoBehaviour script in allScripts)
         {
-            if (script is IDamageable damageable)
+            if (script is IDamageableLearn damageable)
             {
                 m_AllDamageables.Add(damageable);
             }
@@ -27,7 +27,7 @@ public class Interfaces : MonoBehaviour
 
     public void Explode()
     {
-        foreach (IDamageable target in m_AllDamageables)
+        foreach (IDamageableLearn target in m_AllDamageables)
         {
             if (Vector3.Distance(target.Position, transform.position) < range)
             {
@@ -42,7 +42,7 @@ public class Interfaces : MonoBehaviour
     }
 }
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealthLearn : MonoBehaviour, IDamageableLearn
 {
     public float startingHealth = 100f;
     private float m_CurrentHealth;
@@ -61,18 +61,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 }
 
-public class PlayerWithShield : MonoBehaviour
+public class PlayerWithShieldLearn : MonoBehaviour
 {
     [SerializeReference]
-    public IDamageable shield = new ProtonShield(Vector3.zero); 
+    public IDamageableLearn shield = new ProtonShieldLearn(Vector3.zero); 
 }
 
-public class ProtonShield : IDamageable
+public class ProtonShieldLearn : IDamageableLearn
 {
     public float hitPoints = 10f;
     private Vector3 _position;
 
-    public ProtonShield(Vector3 position)
+    public ProtonShieldLearn(Vector3 position)
     {
         _position = position;
     }
